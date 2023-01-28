@@ -20,6 +20,7 @@
         'views/crm_lead.xml',
         'views/res_country.xml',
         'views/res_partner.xml',
+        'views/sale_order.xml',
         
     ],
     'category': 'Theme/Creative'
