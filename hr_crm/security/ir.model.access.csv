@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+"user_access_crm_leads","user_access.crm_leads","model_crm_leads","hr_crm.hr_crm_groups_user",1,0,0,0
+"manager_access_crm_leads","manager_access.crm_leads","model_crm_leads","hr_crm.hr_crm_groups_manager",1,1,1,1
+
+"user_access_grade_program","user_access.grade_program","model_grade_program","hr_crm.hr_crm_groups_user",1,0,0,0
+"manager_access_grade_program","manager_access.grade_program","model_grade_program","hr_crm.hr_crm_groups_manager",1,1,1,1
+
+"user_access_grade_level","user_access.grade_level","model_grade_level","hr_crm.hr_crm_groups_user",1,0,0,0
+"manager_access_grade_level","manager_access.grade_level","model_grade_level","hr_crm.hr_crm_groups_manager",1,1,1,1
+
+"user_access_school_name","user_access.school_name","model_school_name","hr_crm.hr_crm_groups_user",1,0,0,0
+"manager_access_school_name","manager_access.school_name","model_school_name","hr_crm.hr_crm_groups_manager",1,1,1,1
+
+"user_access_contract_status","user_access.contract_status","model_contract_status","hr_crm.hr_crm_groups_user",1,0,0,0
+"manager_access_contract_status","manager_access.contract_status","model_contract_status","hr_crm.hr_crm_groups_manager",1,1,1,1
+

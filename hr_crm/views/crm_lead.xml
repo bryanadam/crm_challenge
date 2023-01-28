@@ -1,0 +1,28 @@
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="crm_lead_form_view">
+			<field name="name">crm_lead.form_view</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_lead_view_form"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="//group/group[1]/field[@name='partner_id']" position="before">
+					<field name="product_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+				</xpath>
+
+				<xpath expr="//group/group[2]/field[@name='partner_id']" position="before">
+					<field name="product_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+				</xpath>
+
+				<xpath expr="//group/group[7]" position="after">
+					<group attrs="{'invisible': [('type', '=', 'lead')]}">
+						<field name="vendor_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+					</group>
+				</xpath>
+
+			</field>
+		</record>
+
+	</data>
+</odoo>

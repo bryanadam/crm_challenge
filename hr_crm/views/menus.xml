@@ -1,0 +1,7 @@
+<odoo>
+	<data>
+
+		<menuitem sequence="4" id="paref_grade_program_menu_view" parent="paref_settings_menu_view" action="paref_grade_program_action_view"/>
+
+	</data>
+</odoo>

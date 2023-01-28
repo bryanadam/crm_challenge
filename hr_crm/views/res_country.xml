@@ -1,0 +1,23 @@
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="view_country_state_tree_form_view">
+			<field name="name">view_country_state_tree.form_view</field>
+			<field name="model">res.country.state</field>
+			<field name="inherit_id" ref="base.view_country_state_tree"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='country_id']" position="after">
+					<field name="team_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+				</xpath>
+
+			</field>
+		</record>
+
+
+
+
+
+
+	</data>
+</odoo>

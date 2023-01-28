@@ -1,0 +1,121 @@
+<odoo>
+	<data>
+		<record id="client_application_page" model="website.page">
+			<field name="url">/client-application</field>
+			<field name="is_published">True</field>
+			<field name="name">Client Application</field>
+			<field name="type">qweb</field>
+			<field name="key">hr_crm.client_application</field>
+			<field name="arch" type="xml">
+				<t name="Thank you (Recruitment)" t-name="hr_crm.client_application">
+					<t t-call="website.layout">
+						<div class="oe_structure"/>
+							<!-- Hero section Start -->
+							<section>
+								<div class="container">
+									<div class="row vertical-content justify-content-center align-items-start">
+										<div class="col-lg-4">
+											<div class="hero-wrapper mb-4">
+												<p class="font-16 text-uppercase">Discover Odoo Today :)</p>
+												<h1 class="hero-title mb-4">Learn to harness the power of <span class="text-primary">Odoo</span> within your organization</h1>
+
+												<p>There are more than 22,000 modules or applications that your organization may be able to take advantage of. We will be more than happy to give you a demonstration on the capabilities and features of the system, if you require</p>
+												<p>This Questionnaire will help us better understand your company's needs and how we can best address those.</p>
+												<p>If you have questions or clarifications, please dont hesitate to drop by our office or contact us</p>
+
+												<div class="mt-4">
+													<a href="#" class="btn btn-primary mt-2 mr-2">Get Started</a>
+													<a href="#" class="btn btn-success mt-2 mr-2">Learn more</a>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-lg-6 offset-lg-2">
+											<div class="card mx-auto p-4 rounded mt-5 mt-lg-0">
+												<div class="text-center">
+													<p class="text-muted mb-2 font-13 text-uppercase">Let us know more about you</p>
+													<h5 class="form-title mb-4">Client Information Sheet</h5>
+												</div>
+
+												<form action="/submit/client_application" method="post" data-model_name="crm.lead" data-success_page="/contactus-thank-you" class="registration-form container-fluid">
+
+													<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+													<div class="form-group mb-4">
+														<div>
+															<label class="font-15">Student's Name*</label>
+															<input type="text" class="form-control" id="stud_fname" name="stud_fname" placeholder="First Name" required=""/>
+															<input type="text" class="form-control" id="stud_lname" name="stud_lname" placeholder="Last Name" required=""/>
+														</div>
+													</div>
+
+													<div class="form-group mb-4">
+														<label class="font-15">Information*</label>
+														<input type="email" class="form-control" id="email" name="email" placeholder="E-mail Address" required=""/>
+														<input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone Number" required=""/>
+														<select class="form-control" name="gender" id="gender">
+															<option>Male</option>
+															<option>Female</option>
+														</select>
+													</div>
+
+													<div class="form-group mb-4">
+														<label class="control-label" for="glevel_id">Grade Level</label>
+														<select class="form-control link-style" name="glevel_id">
+															<t t-foreach="glevel_val" t-as="glevel_ids">
+																<option t-esc="glevel_ids.name" t-att-value="glevel_ids.id"/>
+															</t>
+														</select>
+													</div>
+
+
+													<div class="form-group mb-4">
+														<div>
+															<label class="font-15">Address*</label>
+															<input type="text" class="form-control" id="street1" name="street1" placeholder="Street" required=""/>
+															<input type="text" class="form-control" id="street2" name="street2" placeholder="Street 2"/>
+															<input type="text" class="form-control" id="city" name="city" placeholder="City"/>
+
+																<label class="control-label" for="state_id">State</label>
+																<select class="form-control link-style" name="state_id">
+																	<t t-foreach="state_val" t-as="state_ids">
+																		<option t-esc="state_ids.name" t-att-value="state_ids.id"/>
+																	</t>
+																</select>
+
+																<label class="control-label" for="country_id">Country</label>
+																<select class="form-control link-style" name="country_id">
+																	<option value=''>None</option>
+																	<t t-foreach="country_val" t-as="country_ids">
+																		<option t-esc="country_ids.name" t-att-value="country_ids.id"/>
+																	</t>
+																</select>
+
+															<input type="text" class="form-control" id="zip" name="zip" placeholder="ZIP"/>
+
+														</div>
+													</div>
+
+													<div class="form-group mb-3">
+														<label class="font-15">Comment</label>
+														<textarea class="form-control o_website_form_input" id="description" name="description"></textarea>
+													</div>
+
+													<button type="submit" class="btn btn-primary btn-block btn-sm">Submit<i class="mdi mdi-telegram ml-2"></i></button>
+												</form>
+
+											</div>
+										</div>
+									</div>
+									<!-- end row -->
+								</div>
+								<!-- end container -->
+							</section>
+							<!-- Hero section End -->
+						<div class="oe_structure" />
+
+					</t>
+				</t>
+			</field>
+		</record>
+	</data>
+</odoo>
