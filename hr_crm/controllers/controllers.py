@@ -16,9 +16,9 @@ class ThemeCommon(http.Controller):
 		glevel_rec = request.env['product.product'].sudo().search([])
 
 		this = http.request.render(	'hr_crm.client_application', {
-				'country_val'	: country_rec
-			,	'state_val'		: state_rec
-			,	'glevel_val'	: glevel_rec
+			'country_val'	: country_rec,
+			'state_val'		: state_rec,
+			'glevel_val'	: glevel_rec
 			}
 		)
 		return this
@@ -36,19 +36,19 @@ class ThemeCommon(http.Controller):
 			gender = ''
 
 		partner_value = {
-				'name'			: name
-			,	'gender'		: gender
-			,	'company_type'	: 'person'
-			,	'first_name'	: kw['stud_fname'] if 'stud_fname' in kw else ''
-			,	'last_name'		: kw['stud_lname'] if 'stud_lname' in kw else ''
-			,	'email'			: kw['email'] if 'email' in kw else ''
-			,	'mobile'		: kw['phone'] if 'phone' in kw else ''
-			,	'street'		: kw['street1'] if 'street1' in kw else ''
-			,	'street2'		: kw['street2'] if 'street2' in kw else ''
-			,	'city'			: kw['city'] if 'city' in kw else ''
-			,	'country_id'	: int(kw['country_id'])
-			,	'state_id'		: int(kw['state_id'])
-			,	'zip'			: kw['zip'] if 'zip' in kw else ''
+			'name'			: name,
+			'gender'		: gender,
+			'company_type'	: 'person',
+			'first_name'	: kw['stud_fname'] if 'stud_fname' in kw else '',
+			'last_name'		: kw['stud_lname'] if 'stud_lname' in kw else '',
+			'email'			: kw['email'] if 'email' in kw else '',
+			'mobile'		: kw['phone'] if 'phone' in kw else '',
+			'street'		: kw['street1'] if 'street1' in kw else '',
+			'street2'		: kw['street2'] if 'street2' in kw else '',
+			'city'			: kw['city'] if 'city' in kw else '',
+			'country_id'	: int(kw['country_id']),
+			'state_id'		: int(kw['state_id']),
+			'zip'			: kw['zip'] if 'zip' in kw else ''
 		}
 
 		partner_id = partner.sudo().search([('first_name','=',kw['stud_fname']),('last_name','=',kw['stud_lname'])])
@@ -61,11 +61,12 @@ class ThemeCommon(http.Controller):
 		crm_name = "%s - %s" % (name, product.name)
 
 		crm_value = {
-				'name'			: crm_name
-			,	'partner_id'	: partner_id.id
-			,	'team_id'		: states.team_id.id
-			,	'user_id'		: states.team_id.alias_user_id.id
-			,	'product_id'	: product.id
+			'name'			: crm_name,
+			'partner_id'	: partner_id.id,
+			'team_id'		: states.team_id.id,
+			'user_id'		: states.team_id.alias_user_id.id,
+			'product_id'	: product.id,
+			'description'	: kw['description'] if 'description' in kw else '',
 		}
 
 		request.env['crm.lead'].sudo().create(crm_value)

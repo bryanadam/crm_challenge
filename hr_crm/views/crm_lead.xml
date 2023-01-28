@@ -8,21 +8,33 @@
 			<field name="arch" type="xml">
 
 				<xpath expr="//group/group[1]/field[@name='partner_id']" position="before">
-					<field name="product_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+					<field name="product_id" options="{'no_open':1,'no_create':1,'no_create_edit':1}"/>
 				</xpath>
 
 				<xpath expr="//group/group[2]/field[@name='partner_id']" position="before">
-					<field name="product_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+					<field name="product_id" options="{'no_open':1,'no_create':1,'no_create_edit':1}"/>
 				</xpath>
 
 				<xpath expr="//group/group[7]" position="after">
-					<group attrs="{'invisible': [('type', '=', 'lead')]}">
-						<field name="vendor_id" options="{'no_open':1, 'no_create':1, 'no_create_edit':1}"/>
+					<group attrs="{'invisible': [('type','=','lead')]}">
+						<field name="vendor_id" options="{'no_open':1,'no_create':1,'no_create_edit':1}"/>
 					</group>
 				</xpath>
+
+
+				<xpath expr="//button[@name='action_schedule_meeting']" position="after">
+					<button type="object"
+	                   name="action_view_purchase"
+	                   class="oe_stat_button"
+	                   icon="fa-shopping-cart">
+	                   <field name="purchase_order_count" widget="statinfo" string="Purchase Orders"/>
+	               </button>
+	           </xpath>
+
 
 			</field>
 		</record>
 
 	</data>
 </odoo>
+

@@ -7,6 +7,9 @@ class Crm_CrmLead(models.Model):
 	product_id = fields.Many2one('product.product', string="Grade Level")
 	vendor_id = fields.Many2one('res.partner', string="School", domain="[('supplier_rank','!=',0)]")
 
+	purchase_order_count = fields.Integer("Number of Purchase Order", compute='_compute_purchase_order_count')
+
+
 	def action_new_quotation(self):
 		""" add order line when create sale order """
 		action = super(Crm_CrmLead, self).action_new_quotation()
@@ -35,3 +38,16 @@ class Crm_CrmLead(models.Model):
 
 		action = super(Crm_CrmLead, self).action_set_won_rainbowman()
 		return action
+
+	def _compute_purchase_order_count(self):
+		order = self.env['purchase.order'].search([('sale_id.opportunity_id','=',self.id)])
+		for lead in self:
+			lead.purchase_order_count = len(order)
+
+	def action_view_purchase(self):
+		action = self.env['ir.actions.act_window'].for_xml_id('purchase', 'purchase_rfq')
+		action['domain'] = [('sale_id.opportunity_id','=',self.id)]
+		action['target'] = 'current'
+		return action
+
+

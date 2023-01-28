@@ -29,7 +29,6 @@ class Crm_SaleOrder(models.Model):
 		}
 		purchase = self.env['purchase.order'].create(order)
 		purchase.button_confirm()
-		self._compute_purchase_order_count()
 
 	@api.model_create_multi
 	def create(self, vals_list):
