@@ -11,7 +11,7 @@ class Crm_CrmLead(models.Model):
 
 
 	def action_new_quotation(self):
-		""" add order line when create sale order """
+		""" add/inherit order line when create sale order """
 		action = super(Crm_CrmLead, self).action_new_quotation()
 		price = self.product_id.list_price
 		if self.planned_revenue != 0:
@@ -31,7 +31,7 @@ class Crm_CrmLead(models.Model):
 		""" Create purchase order when status in Won """
 		if not self.vendor_id:
 			raise ValidationError(_("Please fill up Vendor"))
-		sales = self.env['sale.order'].search([('opportunity_id','=',self.id)])
+		sales = self.env['sale.order'].search([('opportunity_id','=',self.id),('state','=','sale')])
 
 		for sale in sales:
 			sale.action_create_purchase()
